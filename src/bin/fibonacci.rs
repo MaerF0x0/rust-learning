@@ -13,17 +13,36 @@ fn main() {
     let mut fibs = HashMap::<u32, u32>::new();
 
     let n = 20;
-    println!("fib({}) = {}", n, fib!(n));
-    println!("fib({}) = {}", n, fib!(n, &mut fibs))
+    println!("fib_nohash({}) = {}", n, fib!(n));
+    println!("fib_hash({}) = {}", n, fib!(n, &mut fibs));
+    println!("fib_iterative({}) = {}", n, fib_iterative(n));
 }
 
 // Compute without a hash
 fn fib_nohash(n: u32) -> u32 {
-    return if n <= 2 {
+    return if n < 2 {
         n
     } else {
         fib_nohash(n - 1) + fib_nohash(n - 2)
     };
+}
+
+fn fib_iterative(n: u32) -> u32 {
+    if n < 2 {
+        return n;
+    }
+    let mut cur: u32 = 1;
+    let mut prev: u32 = 1;
+    let mut this_fib: u32 = 2;
+
+    while this_fib < n {
+        this_fib = this_fib + 1;
+        let tmp = cur + prev;
+        prev = cur;
+        cur = tmp
+    }
+
+    return cur;
 }
 
 // Compute using a hash to memoize
