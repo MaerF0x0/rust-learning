@@ -20,11 +20,11 @@ fn main() {
 
 // Compute without a hash
 fn fib_nohash(n: u32) -> u32 {
-    return if n < 2 {
+    if n < 2 {
         n
     } else {
         fib_nohash(n - 1) + fib_nohash(n - 2)
-    };
+    }
 }
 
 fn fib_iterative(n: u32) -> u32 {
@@ -33,10 +33,10 @@ fn fib_iterative(n: u32) -> u32 {
     }
     let mut cur: u32 = 1;
     let mut prev: u32 = 1;
-    let mut this_fib: u32 = 2;
+    let mut i: u32 = 2;
 
-    while this_fib < n {
-        this_fib = this_fib + 1;
+    while i < n {
+        i = i + 1;
         let tmp = cur + prev;
         prev = cur;
         cur = tmp
