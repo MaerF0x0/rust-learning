@@ -62,3 +62,27 @@ fn fib_hash(n: u32, fibs: &mut HashMap<u32, u32>) -> u32 {
         }
     }
 }
+
+/* This doesnt work TODO learn testing
+#[test]
+fn test_fibnohash() {
+    let cases = [
+        (0, 0),
+        (1, 1),
+        (2, 1),
+        (3, 2),
+        (4, 3),
+        (5, 5),
+        (6, 8),
+        (7, 13),
+        (8, 21),
+        (9, 34),
+        (10, 51),
+        (11, 50), // <-- bad test to see output
+    ];
+
+    for &(input, expected) in &cases {
+        assert_eq!(fib_nohash(input), Ok(expected));
+    }
+}
+*/
